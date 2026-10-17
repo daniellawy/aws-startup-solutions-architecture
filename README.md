@@ -40,6 +40,12 @@ A Python REST API built with FastAPI as a cloud architecture portfolio project. 
 
 Interactive API documentation is available at `/docs` while the application is running.
 
+### API Documentation Screenshot
+
+The following screenshot shows the registered endpoints in FastAPI's interactive Swagger UI.
+
+![FastAPI Swagger UI showing the API endpoints](docs/screenshots/01-fastapi-swagger-endpoints.png)
+
 ## Local Development
 
 Install the dependencies:
@@ -58,14 +64,45 @@ Open `/docs` on the server's local or forwarded URL to test the endpoints.
 
 ## Validation and Testing
 
-Manual tests have covered:
+Manual tests have covered the following scenarios.
 
-- Successful booking creation (`201 Created`).
-- Listing bookings (`200 OK`).
-- Retrieving an existing booking (`200 OK`).
-- Retrieving a nonexistent booking (`404 Not Found`).
-- Invalid booking date (`422 Unprocessable Entity`).
-- Missing required customer name (`422 Unprocessable Entity`).
+### 1. Successful Booking Creation
+
+A valid booking request returns `201 Created` and includes a generated booking ID and pending status.
+
+![Successful booking creation returning HTTP 201](docs/screenshots/02-booking-created-201.png)
+
+### 2. List All Bookings
+
+The API returns `200 OK` and a JSON array containing the saved bookings.
+
+![Booking list response returning HTTP 200](docs/screenshots/03-booking-list-response.png)
+
+### 3. Retrieve a Single Booking
+
+The API retrieves an existing booking using its unique ID.
+
+![View single booking retrieval evidence](docs/screenshots/04-single-booking-retrieval.png)
+
+### 4. Handle a Missing Booking
+
+A request for a nonexistent booking returns `404 Not Found`.
+
+![View booking not found evidence](docs/screenshots/05-booking-not-found-404.png)
+
+### 5. Validate an Invalid Booking Date
+
+An invalid date is rejected with `422 Unprocessable Entity`.
+
+![View invalid date validation evidence](docs/screenshots/06-invalid-date-validation-422.png)
+
+### 6. Validate Required Fields
+
+A request without the required `customer_name` field is rejected with `422 Unprocessable Entity`.
+
+![View missing customer name validation evidence](docs/screenshots/07-missing-customer-name-422.png)
+
+These screenshots provide evidence of manual API testing. Automated test coverage has not yet been implemented.
 
 ## Current Limitations
 
@@ -81,4 +118,5 @@ The final architecture will be documented after implementation and validation.
 
 ## Evidence
 
-Screenshots of API endpoints and validation tests will be stored in `docs/screenshots/`.
+All screenshot evidence is stored in [`docs/screenshots/`](docs/screenshots/).
+
